@@ -8,10 +8,12 @@ import {
   Activity, 
   BoxArrowRight,
   Trophy,
-  HeartPulse,
-  PersonCircle
+  HeartPulse
 } from 'react-bootstrap-icons';
 import './LeftMenu.css';
+
+// Default profile image URL (using DiceBear avatars for demonstration)
+const DEFAULT_PROFILE_IMAGE = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop';
 
 function LeftMenu() {
   const location = useLocation();
@@ -21,8 +23,8 @@ function LeftMenu() {
   const storedUsername = localStorage.getItem('fitnessHubUsername') || "Guest";
   
   const [user] = useState({
-    name: storedUsername, // Use the stored username here
-    avatar: null
+    name: storedUsername,
+    avatar: DEFAULT_PROFILE_IMAGE
   });
 
   const menuItems = [
@@ -36,11 +38,15 @@ function LeftMenu() {
   return (
     <Nav className="flex-column left-menu-container p-3">
       <div className="user-profile mb-4">
-        {user.avatar ? (
-          <img src={user.avatar} alt="User" className="user-avatar" />
-        ) : (
-          <PersonCircle size={50} className="default-avatar" />
-        )}
+        <img 
+          src={user.avatar} 
+          alt="User" 
+          className="user-avatar"
+          onError={(e) => {
+            e.target.onerror = null; 
+            e.target.src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+          }}
+        />
         <div className="user-info">
           <div className="user-name">{user.name}</div>
           <div className="user-status">Premium Member</div>

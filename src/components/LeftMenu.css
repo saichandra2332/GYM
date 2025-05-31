@@ -1,4 +1,3 @@
-/* LeftMenu.css */
 .left-menu-container {
   width: 250px;
   min-height: 100vh;
@@ -25,11 +24,12 @@
   object-fit: cover;
   margin-right: 15px;
   border: 2px solid #ff6b35;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.default-avatar {
-  color: #ff6b35;
-  margin-right: 15px;
+.user-avatar:hover {
+  transform: scale(1.05);
 }
 
 .user-info {
@@ -41,6 +41,10 @@
   font-weight: 600;
   font-size: 1.1rem;
   margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 
 .user-status {
@@ -83,6 +87,7 @@
 
 .icon-animate {
   animation: bounce 0.5s ease;
+  color: #ff6b35;
 }
 
 .menu-label {
@@ -116,9 +121,31 @@
 
 .logout-item:hover {
   color: #ff6b35 !important;
+  background: transparent !important;
 }
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .left-menu-container {
+    width: 60px;
+    overflow: hidden;
+  }
+  
+  .user-info, .menu-label {
+    display: none;
+  }
+  
+  .menu-item {
+    justify-content: center;
+    padding: 12px 5px !important;
+  }
+  
+  .menu-icon {
+    margin-right: 0;
+  }
 }
