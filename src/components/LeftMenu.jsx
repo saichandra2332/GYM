@@ -16,9 +16,13 @@ import './LeftMenu.css';
 function LeftMenu() {
   const location = useLocation();
   const [hoveredItem, setHoveredItem] = useState(null);
+  
+  // Get the username from localStorage that was set during login
+  const storedUsername = localStorage.getItem('fitnessHubUsername') || "Guest";
+  
   const [user] = useState({
-    name: "John Doe",
-    avatar: null // You can replace with actual image URL if available
+    name: storedUsername, // Use the stored username here
+    avatar: null
   });
 
   const menuItems = [
