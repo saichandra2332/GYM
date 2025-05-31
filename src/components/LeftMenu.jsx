@@ -8,32 +8,39 @@ import {
   Activity, 
   BoxArrowRight,
   Trophy,
-  HeartPulse
+  HeartPulse,
+  PersonCircle
 } from 'react-bootstrap-icons';
-import './LeftMenu.css'; // We'll create this CSS file
+import './LeftMenu.css';
 
 function LeftMenu() {
   const location = useLocation();
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [user] = useState({
+    name: "John Doe",
+    avatar: null // You can replace with actual image URL if available
+  });
 
   const menuItems = [
     { path: "/home", icon: <House size={20} />, label: "Home" },
     { path: "/home/workouts", icon: <Activity size={20} />, label: "Workouts" },
     { path: "/home/members", icon: <People size={20} />, label: "Members" },
     { path: "/home/schedule", icon: <Calendar size={20} />, label: "Contact" },
-    
     { path: "/logout", icon: <BoxArrowRight size={20} />, label: "Logout", className: "logout-item" }
   ];
 
   return (
     <Nav className="flex-column left-menu-container p-3">
-      <div className="brand-logo mb-4">
-        <div className="animated-dumbbell">
-          <div className="bar"></div>
-          <div className="weight left"></div>
-          <div className="weight right"></div>
+      <div className="user-profile mb-4">
+        {user.avatar ? (
+          <img src={user.avatar} alt="User" className="user-avatar" />
+        ) : (
+          <PersonCircle size={50} className="default-avatar" />
+        )}
+        <div className="user-info">
+          <div className="user-name">{user.name}</div>
+          <div className="user-status">Premium Member</div>
         </div>
-        <span className="brand-name">FITNESS GURU</span>
       </div>
       
       {menuItems.map((item, index) => (

@@ -6,9 +6,11 @@
   color: white;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.brand-logo {
+.user-profile {
   display: flex;
   align-items: center;
   padding: 15px 10px;
@@ -16,52 +18,38 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.animated-dumbbell {
-  position: relative;
-  width: 40px;
-  height: 20px;
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 2px solid #ff6b35;
+}
+
+.default-avatar {
+  color: #ff6b35;
   margin-right: 15px;
 }
 
-.bar {
-  position: absolute;
-  width: 100%;
-  height: 6px;
-  background: #ff6b35;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 3px;
+.user-info {
+  display: flex;
+  flex-direction: column;
 }
 
-.weight {
-  position: absolute;
-  width: 12px;
-  height: 30px;
-  background: #ff6b35;
-  border-radius: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  animation: float 3s ease-in-out infinite;
+.user-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 3px;
 }
 
-.weight.left {
-  left: -10px;
-  animation-delay: 0s;
-}
-
-.weight.right {
-  right: -10px;
-  animation-delay: 0.5s;
-}
-
-.brand-name {
-  font-family: 'Bangers', cursive;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  background: linear-gradient(to right, #ff6b35, #ff9a5a);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.user-status {
+  font-size: 0.8rem;
+  color: #ff9a5a;
+  background: rgba(255, 107, 53, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  align-self: flex-start;
 }
 
 .menu-item {
@@ -133,9 +121,4 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(-50%); }
-  50% { transform: translateY(-60%); }
 }
