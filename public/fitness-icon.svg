@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .dumbbell {
+      transform-origin: 50% 50%;
+      animation: pump 1.5s infinite ease-in-out;
+    }
+    @keyframes pump {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+  <g class="dumbbell">
+    <!-- Dumbbell bar -->
+    <rect x="30" y="45" width="40" height="10" rx="2" fill="#FF6B6B"/>
+    <!-- Left weight -->
+    <circle cx="25" cy="50" r="15" fill="#4ECDC4"/>
+    <circle cx="25" cy="50" r="10" fill="#1A1A2E"/>
+    <!-- Right weight -->
+    <circle cx="75" cy="50" r="15" fill="#4ECDC4"/>
+    <circle cx="75" cy="50" r="10" fill="#1A1A2E"/>
+  </g>
+</svg>

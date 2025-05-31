@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title> Fitness Guru</title>
+    
+    <!-- Simplified animated favicon that works in Chrome -->
+    <link rel="icon" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <style>
+        @keyframes lift {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(-5deg); }
+        }
+        .lifter {
+          animation: lift 1s infinite ease-in-out;
+          transform-origin: 50% 100%;
+        }
+      </style>
+      <rect width='100%' height='100%' fill='%231a1a2e'/>
+      <g class='lifter'>
+        <!-- Simple weightlifter silhouette -->
+        <circle cx='50' cy='30' r='10' fill='%23ffd166'/>
+        <path d='M50 40 L50 70' stroke='%23fff' stroke-width='4' stroke-linecap='round'/>
+        <path d='M50 50 L30 40' stroke='%23fff' stroke-width='4' stroke-linecap='round'/>
+        <path d='M50 50 L70 40' stroke='%23fff' stroke-width='4' stroke-linecap='round'/>
+        <path d='M50 70 L40 90' stroke='%23fff' stroke-width='4' stroke-linecap='round'/>
+        <path d='M50 70 L60 90' stroke='%23fff' stroke-width='4' stroke-linecap='round'/>
+        <!-- Dumbbell -->
+        <rect x='25' y='35' width='50' height='6' rx='3' fill='%23ff6b6b'/>
+        <circle cx='25' cy='38' r='8' fill='%234ECDC4'/>
+        <circle cx='75' cy='38' r='8' fill='%234ECDC4'/>
+      </g>
+    </svg>"
+    />
+    
+    <!-- Fallback JavaScript animation -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if favicon is static after 2 seconds
+        setTimeout(function() {
+          const favicon = document.querySelector('link[rel="icon"]');
+          if (!favicon.href.includes(';')) { // Simple check for static favicon
+            animateFavicon();
+          }
+        }, 2000);
+        
+        function animateFavicon() {
+          const canvas = document.createElement('canvas');
+          canvas.width = 32;
+          canvas.height = 32;
+          const ctx = canvas.getContext('2d');
+          let angle = 0;
+          
+          function update() {
+            ctx.clearRect(0, 0, 32, 32);
+            
+            // Background
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, 32, 32);
+            
+            // Calculate animation position
+            const lift = Math.sin(angle) * 3;
+            angle += 0.1;
+            
+            // Draw weightlifter
+            ctx.fillStyle = '#ffd166';
+            ctx.beginPath();
+            ctx.arc(16, 8 - lift, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Body
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(16, 12 - lift);
+            ctx.lineTo(16, 20 - lift);
+            ctx.stroke();
+            
+            // Arms
+            ctx.beginPath();
+            ctx.moveTo(16, 15 - lift);
+            ctx.lineTo(10, 13 - lift);
+            ctx.moveTo(16, 15 - lift);
+            ctx.lineTo(22, 13 - lift);
+            ctx.stroke();
+            
+            // Legs
+            ctx.beginPath();
+            ctx.moveTo(16, 20 - lift);
+            ctx.lineTo(13, 28);
+            ctx.moveTo(16, 20 - lift);
+            ctx.lineTo(19, 28);
+            ctx.stroke();
+            
+            // Dumbbell
+            ctx.fillStyle = '#ff6b6b';
+            ctx.fillRect(8, 13 - lift, 16, 2);
+            ctx.fillStyle = '#4ECDC4';
+            ctx.beginPath();
+            ctx.arc(8, 14 - lift, 3, 0, Math.PI * 2);
+            ctx.arc(24, 14 - lift, 3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Update favicon
+            const link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = canvas.toDataURL('image/png');
+            
+            const oldLink = document.querySelector('link[rel="icon"]');
+            if (oldLink) document.head.removeChild(oldLink);
+            document.head.appendChild(link);
+            
+            requestAnimationFrame(update);
+          }
+          
+          update();
+        }
+      });
+    </script>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+</body>
+</html>
