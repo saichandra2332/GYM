@@ -490,43 +490,48 @@ const Workouts = () => {
           transition={{ delay: 0.4 }}
           className="controls"
         >
-          <InputGroup className="search-bar">
-            <InputGroup.Text>
-              <Search />
-            </InputGroup.Text>
-            <Form.Control
-              placeholder="Search workouts..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </InputGroup>
+          <div className="d-flex flex-column flex-md-row w-100 gap-3">
+            <InputGroup className="search-bar">
+              <InputGroup.Text>
+                <Search />
+              </InputGroup.Text>
+              <Form.Control
+                placeholder="Search workouts..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </InputGroup>
 
-          <div className="filter-group">
-            <InputGroup.Text>
-              <Filter />
-            </InputGroup.Text>
-            <Form.Select
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-            >
-              <option value="All">All Categories</option>
-              <option value="Cardio">Cardio</option>
-              <option value="Strength">Strength</option>
-              <option value="Flexibility">Flexibility</option>
-              <option value="HIIT">HIIT</option>
-              <option value="Core">Core</option>
-            </Form.Select>
+            <div className="d-flex gap-3">
+              <InputGroup className="filter-group">
+                <InputGroup.Text>
+                  <Filter />
+                </InputGroup.Text>
+                <Form.Select
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                >
+                  <option value="All">All Categories</option>
+                  <option value="Cardio">Cardio</option>
+                  <option value="Strength">Strength</option>
+                  <option value="Flexibility">Flexibility</option>
+                  <option value="HIIT">HIIT</option>
+                  <option value="Core">Core</option>
+                </Form.Select>
+              </InputGroup>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="add-button"
+                onClick={() => setShowAddForm(!showAddForm)}
+              >
+                <PlusCircle size={20} className="me-2" />
+                <span className="d-none d-md-inline">Add Workout</span>
+                <span className="d-md-none">Add</span>
+              </motion.button>
+            </div>
           </div>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="add-button"
-            onClick={() => setShowAddForm(!showAddForm)}
-          >
-            <PlusCircle size={20} className="me-2" />
-            Add Workout
-          </motion.button>
         </motion.div>
       </div>
 
@@ -796,10 +801,10 @@ const Workouts = () => {
                   <Card>
                     <Card.Body>
                       <div className="d-flex justify-content-between align-items-start">
-                        <div>
+                        <div style={{ flex: 1 }}>
                           <div className="d-flex align-items-center mb-2">
                             {categoryIcons[workout.category]}
-                            <h5 className="mb-0 ms-2">{workout.name}</h5>
+                            <h5 className="mb-0 ms-2" style={{ fontSize: '1.1rem' }}>{workout.name}</h5>
                           </div>
                           <div className="d-flex flex-wrap gap-2 mb-2">
                             <Badge bg={difficultyVariant[workout.difficulty]}>
@@ -829,12 +834,17 @@ const Workouts = () => {
                           <Fire size={16} />
                           <span>{workout.calories} kcal</span>
                         </div>
+                        <div className="stat-box">
+                          <Activity size={16} />
+                          <span>{workout.exercises.length} ex.</span>
+                        </div>
                       </div>
                       
-                      <div className="d-flex justify-content-between align-items-center">
+                      <div className="d-flex justify-content-between gap-2">
                         <Button 
                           variant="outline-primary" 
                           size="sm"
+                          className="flex-grow-1"
                           onClick={() => setShowDetails(workout.id)}
                         >
                           <InfoCircle className="me-1" />
@@ -843,6 +853,7 @@ const Workouts = () => {
                         <Button 
                           variant="outline-success" 
                           size="sm"
+                          className="flex-grow-1"
                           onClick={() => startWorkout(workout)}
                         >
                           <PlayFill className="me-1" />
