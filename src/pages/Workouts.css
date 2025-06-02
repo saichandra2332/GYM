@@ -369,3 +369,153 @@ html, body {
   overflow-x: hidden;
   width: 100%;
 }
+
+
+/* Add these styles to your existing CSS */
+
+/* Responsive table styles */
+.workouts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.workouts-table th, 
+.workouts-table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.workouts-table th {
+  font-weight: 600;
+  background-color: #f8f9fa;
+  position: sticky;
+  top: 0;
+}
+
+/* Make table responsive on small screens */
+@media (max-width: 768px) {
+  .workouts-table {
+    display: block;
+    width: 100%;
+  }
+  
+  .workouts-table thead {
+    display: none;
+  }
+  
+  .workouts-table tbody {
+    display: block;
+    width: 100%;
+  }
+  
+  .workouts-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    position: relative;
+  }
+  
+  .workouts-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: right;
+  }
+  
+  .workouts-table td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: auto;
+    padding-right: 1rem;
+    text-align: left;
+  }
+  
+  .workouts-table td:last-child {
+    border-bottom: none;
+  }
+  
+  /* Adjust action buttons for mobile */
+  .workouts-table .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Ensure card view is hidden since we're using table for all devices */
+.workout-card-view {
+  display: none !important;
+}
+
+
+
+
+/* Workouts.css - Update these styles */
+
+/* Table styles - keep exact layout */
+.workouts-table {
+  width: 100%;
+  min-width: 800px; /* Minimum width to prevent squeezing */
+  border-collapse: collapse;
+}
+
+.workouts-table th, 
+.workouts-table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.workouts-table th {
+  font-weight: 600;
+  background-color: #f8f9fa;
+  position: sticky;
+  top: 0;
+}
+
+/* Make table horizontally scrollable on small screens */
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide card view completely */
+.workout-card-view {
+  display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .workouts-table {
+    font-size: 0.9rem; /* Slightly smaller font on tablets */
+  }
+  
+  .workouts-table th, 
+  .workouts-table td {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .workouts-table {
+    font-size: 0.85rem; /* Even smaller font on phones */
+  }
+  
+  .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+  }
+}

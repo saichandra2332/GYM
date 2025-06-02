@@ -684,109 +684,119 @@ const Workouts = () => {
           </motion.div>
         ) : (
           <>
-            <div className="table-responsive d-none d-lg-block">
-              <Table hover className="workouts-table">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Duration</th>
-                    <th>Difficulty</th>
-                    <th>Category</th>
-                    <th>Calories</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <AnimatePresence>
-                    {filteredWorkouts.map((workout) => (
-                      <motion.tr
-                        key={workout.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        whileHover={{ scale: 1.01, boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}
-                        className={`workout-row ${workout.completed ? 'completed-workout' : ''}`}
-                      >
-                        <td>
-                          <motion.div
-                            whileHover={{ scale: 1.2 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => toggleFavorite(workout.id)}
-                            style={{ cursor: 'pointer' }}
-                          >
-                            {workout.favorite ? (
-                              <StarFill className="text-warning" />
-                            ) : (
-                              <Star className="text-muted" />
-                            )}
-                          </motion.div>
-                        </td>
-                        <td>
-                          <div className="workout-name">
-                            {categoryIcons[workout.category]}
-                            <span className="ms-2">{workout.name}</span>
-                            {workout.completed && (
-                              <Badge bg="success" className="ms-2">
-                                Completed
-                              </Badge>
-                            )}
-                          </div>
-                        </td>
-                        <td>
-                          <div className="duration">
-                            <Clock className="me-2" />
-                            {workout.duration} min
-                          </div>
-                        </td>
-                        <td>
-                          <Badge bg={difficultyVariant[workout.difficulty]}>
-                            {workout.difficulty}
-                          </Badge>
-                        </td>
-                        <td>
-                          <Badge 
-                            style={{ 
-                              backgroundColor: categoryColors[workout.category],
-                              color: 'white'
-                            }}
-                          >
-                            {workout.category}
-                          </Badge>
-                        </td>
-                        <td>
-                          <div className="calories">
-                            <Fire className="me-2" />
-                            {workout.calories} kcal
-                          </div>
-                        </td>
-                        <td>
-                          <Button 
-                            variant="outline-primary" 
-                            size="sm" 
-                            className="me-2"
-                            onClick={() => setShowDetails(workout.id)}
-                          >
-                            <InfoCircle className="me-1" />
-                            Details
-                          </Button>
-                          <Button 
-                            variant="outline-success" 
-                            size="sm"
-                            onClick={() => startWorkout(workout)}
-                          >
-                            <PlayFill className="me-1" />
-                            Start
-                          </Button>
-                        </td>
-                      </motion.tr>
-                    ))}
-                  </AnimatePresence>
-                </tbody>
-              </Table>
-            </div>
-
+ <div className="table-responsive">
+  <Table hover className="workouts-table">
+    <thead>
+      <tr>
+        <th style={{ width: '40px' }}></th> {/* Favorite star */}
+        <th>Name</th>
+        <th style={{ width: '100px' }}>Duration</th>
+        <th style={{ width: '120px' }}>Difficulty</th>
+        <th style={{ width: '120px' }}>Category</th>
+        <th style={{ width: '100px' }}>Calories</th>
+        <th style={{ width: '180px' }}>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <AnimatePresence>
+        {filteredWorkouts.map((workout) => (
+          <motion.tr
+            key={workout.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.01, boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}
+            className={`workout-row ${workout.completed ? 'completed-workout' : ''}`}
+          >
+            <td>
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => toggleFavorite(workout.id)}
+                style={{ cursor: 'pointer' }}
+              >
+                {workout.favorite ? (
+                  <StarFill className="text-warning" />
+                ) : (
+                  <Star className="text-muted" />
+                )}
+              </motion.div>
+            </td>
+            <td>
+              <div className="d-flex align-items-center">
+                <span style={{ 
+                  display: 'inline-block',
+                  width: '20px',
+                  marginRight: '10px',
+                  color: categoryColors[workout.category]
+                }}>
+                  {categoryIcons[workout.category]}
+                </span>
+                <span className="text-truncate" style={{ maxWidth: '200px' }}>
+                  {workout.name}
+                </span>
+                {workout.completed && (
+                  <Badge bg="success" className="ms-2">
+                    Completed
+                  </Badge>
+                )}
+              </div>
+            </td>
+            <td>
+              <div className="d-flex align-items-center">
+                <Clock className="me-2" />
+                {workout.duration} min
+              </div>
+            </td>
+            <td>
+              <Badge bg={difficultyVariant[workout.difficulty]}>
+                {workout.difficulty}
+              </Badge>
+            </td>
+            <td>
+              <Badge 
+                style={{ 
+                  backgroundColor: categoryColors[workout.category],
+                  color: 'white'
+                }}
+              >
+                {workout.category}
+              </Badge>
+            </td>
+            <td>
+              <div className="d-flex align-items-center">
+                <Fire className="me-2" />
+                {workout.calories} kcal
+              </div>
+            </td>
+            <td>
+              <div className="d-flex">
+                <Button 
+                  variant="outline-primary" 
+                  size="sm" 
+                  className="me-2"
+                  onClick={() => setShowDetails(workout.id)}
+                >
+                  <InfoCircle className="me-1" />
+                  <span className="d-none d-md-inline">Details</span>
+                </Button>
+                <Button 
+                  variant="outline-success" 
+                  size="sm"
+                  onClick={() => startWorkout(workout)}
+                >
+                  <PlayFill className="me-1" />
+                  <span className="d-none d-md-inline">Start</span>
+                </Button>
+              </div>
+            </td>
+          </motion.tr>
+        ))}
+      </AnimatePresence>
+    </tbody>
+  </Table>
+</div>
             <div className="workout-card-view d-lg-none">
               {filteredWorkouts.map((workout) => (
                 <motion.div
