@@ -109,9 +109,10 @@ function Header() {
                   </Badge>
                 </Dropdown.Header>
                 
-                <Dropdown.Item href="/profile" className="dropdown-item-hover">
-                  <PersonFill className="me-2" /> My Profile
-                </Dropdown.Item>
+               {/* // In your Dropdown.Item for Profile, change href to "/profile" (lowercase) */}
+<Dropdown.Item href="/profile" className="dropdown-item-hover">
+  <PersonFill className="me-2" /> My Profile
+</Dropdown.Item>
                 
                 <Dropdown.Item href="/settings" className="dropdown-item-hover">
                   <GearFill className="me-2" /> Settings

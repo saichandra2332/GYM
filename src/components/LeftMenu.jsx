@@ -7,10 +7,10 @@ import {
   People, 
   Activity, 
   BoxArrowRight,
+  PersonBadge,
   Trophy,
   HeartPulse,
   Gear,
-  PersonBadge,
   GraphUp
 } from 'react-bootstrap-icons';
 import './LeftMenu.css';
@@ -43,6 +43,8 @@ function LeftMenu() {
     { path: "/home/workouts", icon: <Activity />, label: "Workouts", color: "#4ECDC4" },
     { path: "/home/members", icon: <People />, label: "Community", color: "#45B7D1" },
     { path: "/home/schedule", icon: <Calendar />, label: "Schedule", color: "#FFA630" },
+    { path: "/settings", icon: <Gear />, label: "Settings", color: "#808080" },
+    { path: "/profile", icon: <PersonBadge />, label: "Profile", color: "#A78AFF" },
     { path: "/logout", icon: <BoxArrowRight />, label: "Logout", color: "#FF3366", className: "logout-item" }
   ];
 
