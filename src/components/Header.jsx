@@ -58,7 +58,7 @@ function Header() {
           </div>
           <span className="ms-2 text-gradient animated-title">
             <span className="title-main">FITNESS</span>
-            <span className="title-accent"> HUB</span>
+            <span className="title-accent"> GURU</span>
             <span className="flame-icon"><Fire /></span>
           </span>
         </Navbar.Brand>
