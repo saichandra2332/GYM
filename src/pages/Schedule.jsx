@@ -22,9 +22,9 @@ const Schedule = () => {
   };
 
   const contactInfo = [
-    { icon: <FaPhone className="contact-icon" />, title: "Phone", info: "+1 (555) 123-4567" },
-    { icon: <FaEnvelope className="contact-icon" />, title: "Email", info: "info@powerhousegym.com" },
-    { icon: <FaMapMarkerAlt className="contact-icon" />, title: "Address", info: "123 Fitness St, Gym City" },
+    { icon: <FaPhone className="contact-icon" />, title: "Phone", info: "7386606345" },
+    { icon: <FaEnvelope className="contact-icon" />, title: "Email", info: "fitnessguru@gmail.com" },
+    { icon: <FaMapMarkerAlt className="contact-icon" />, title: "Address", info: "Fitness guru St, Gym City" },
     { icon: <FaClock className="contact-icon" />, title: "Hours", info: "Mon-Fri: 5AM-11PM\nSat-Sun: 7AM-9PM" }
   ];
 
@@ -129,17 +129,18 @@ const Schedule = () => {
 
       {/* Google Map */}
       <Row className="map-row mx-0">
-        <Col className="px-0">
-          <div className="map-container">
-            <iframe
-              title="Gym Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7601.010861384702!2d83.31003719107737!3d17.72080863289718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a394332055898a9%3A0xd295c68e3f3f3658!2sVarun%20Fitness!5e0!3m2!1sen!2sin!4v1748602591292!5m2!1sen!2sin" 
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-          </div>
-        </Col>
-      </Row>
+  <Col className="px-0">
+    <div className="map-container">
+      <iframe
+        title="Gym Location"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7601.010861384702!2d83.31003719107737!3d17.72080863289718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a394332055898a9%3A0xd295c68e3f3f3658!2sVarun%20Fitness!5e0!3m2!1sen!2sin!4v1748602591292!5m2!1sen!2sin" 
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </Col>
+</Row>
+
     </Container>
   );
 };

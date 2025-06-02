@@ -156,7 +156,7 @@ const Footer = () => {
           transition={{ delay: 0.5 }}
         >
           <p className="mb-0">
-            &copy; {new Date().getFullYear()} PowerFlex Gym. All rights reserved.
+            &copy; {new Date().getFullYear()} Fitness Guru Gym. All rights reserved.
           </p>
         </motion.div>
       </Container>

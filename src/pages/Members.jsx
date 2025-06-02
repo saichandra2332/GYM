@@ -15,10 +15,10 @@ import {
 } from 'react-icons/fa';
 
 const membersData = [
-  { id: 1, name: 'John Doe', membership: 'Premium', joinDate: '2023-01-15', active: true, email: 'john@example.com', phone: '555-1234' },
-  { id: 2, name: 'Jane Smith', membership: 'Standard', joinDate: '2023-02-20', active: true, email: 'jane@example.com', phone: '555-5678' },
-  { id: 3, name: 'Mike Johnson', membership: 'Premium', joinDate: '2023-03-10', active: true, email: 'mike@example.com', phone: '555-9012' },
-  { id: 4, name: 'Sarah Williams', membership: 'Basic', joinDate: '2023-04-05', active: false, email: 'sarah@example.com', phone: '555-3456' },
+  { id: 1, name: 'Pavan Kumar', membership: 'Premium', joinDate: '2023-01-15', active: true, email: 'john@example.com', phone: '555-1234' },
+  { id: 2, name: 'Sai Chandra', membership: 'Standard', joinDate: '2023-02-20', active: true, email: 'jane@example.com', phone: '555-5678' },
+  { id: 3, name: 'Anandh', membership: 'Premium', joinDate: '2023-03-10', active: true, email: 'mike@example.com', phone: '555-9012' },
+  { id: 4, name: 'Santosh', membership: 'Basic', joinDate: '2023-04-05', active: false, email: 'sarah@example.com', phone: '555-3456' },
 ];
 
 const MembershipBadge = ({ type }) => {
@@ -214,7 +214,7 @@ function Members() {
                     <td>
                       <Stack direction="horizontal" gap={2}>
                         <Button variant="outline-primary" size="sm" className="d-flex align-items-center gap-1">
-                          <FaPhone size={12} /> Call
+                          <FaPhone sizesize={12} /> Call
                         </Button>
                         <Button variant="outline-success" size="sm" className="d-flex align-items-center gap-1">
                           <FaEnvelope size={12} /> Email
