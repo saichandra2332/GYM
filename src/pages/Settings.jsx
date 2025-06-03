@@ -31,7 +31,7 @@ import './Settings.css'; // We'll create this CSS file
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState('general');
-  const [theme, setTheme] = useState('light');
+const [theme, setTheme] = useState(localStorage.getItem('fitnessHubTheme') || 'light');
   const [notifications, setNotifications] = useState({
     email: true,
     push: true,
@@ -140,8 +140,10 @@ const Settings = () => {
   };
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
+  const newTheme = theme === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+  localStorage.setItem('fitnessHubTheme', newTheme);
+};
 
   const settingsTabs = [
     { id: 'general', icon: <Gear />, label: 'General' },
@@ -160,7 +162,7 @@ const Settings = () => {
   ];
 
   return (
-    <Container fluid className="settings-container">
+    <Container fluid className={`settings-container ${theme === 'dark' ? 'dark-mode' : ''}`}>
       <Row>
         <Col md={3} className="settings-sidebar p-0">
           <motion.div 
@@ -346,25 +348,49 @@ const Settings = () => {
                     <div className="theme-selector mb-4">
                       <h5>Theme</h5>
                       <div className="theme-options">
-                        <div 
-                          className={`theme-option ${theme === 'light' ? 'active' : ''}`}
-                          onClick={() => setTheme('light')}
-                        >
-                          <div className="theme-preview light">
-                            <Sun size={24} />
-                          </div>
-                          <span>Light</span>
-                        </div>
-                        <div 
-                          className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
-                          onClick={() => setTheme('dark')}
-                        >
-                          <div className="theme-preview dark">
-                            <Moon size={24} />
-                          </div>
-                          <span>Dark</span>
-                        </div>
-                      </div>
+  <motion.div 
+    className={`theme-option ${theme === 'light' ? 'active' : ''}`}
+    onClick={() => setTheme('light')}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="theme-preview light">
+      <Sun size={24} />
+    </div>
+    <span>Light</span>
+    {theme === 'light' && (
+      <motion.div 
+        className="theme-check"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      >
+        <CheckCircle size={20} />
+      </motion.div>
+    )}
+  </motion.div>
+  <motion.div 
+    className={`theme-option ${theme === 'dark' ? 'active' : ''}`}
+    onClick={() => setTheme('dark')}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="theme-preview dark">
+      <Moon size={24} />
+    </div>
+    <span>Dark</span>
+    {theme === 'dark' && (
+      <motion.div 
+        className="theme-check"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      >
+        <CheckCircle size={20} />
+      </motion.div>
+    )}
+  </motion.div>
+</div>
                     </div>
                     
                     <div className="accent-color-selector mb-4">

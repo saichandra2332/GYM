@@ -419,6 +419,48 @@
   border-color: #ff6b35;
 }
 
+/* Add these after all your existing CSS but before any @media queries */
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+.dark-mode .settings-card {
+  background-color: #16213e;
+  color: #ffffff;
+}
+
+/* ... (all other dark mode CSS classes from above) ... */
+
+/* New theme selector styles */
+.theme-check {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff6b35;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-option {
+  position: relative;
+  padding: 1.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.theme-option.active {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .settings-sidebar {
