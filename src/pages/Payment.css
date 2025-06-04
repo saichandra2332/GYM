@@ -1,0 +1,382 @@
+/* Payment.css */
+
+/* Base Styles */
+.payment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.payment-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.payment-subtitle {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 0;
+}
+
+/* Membership Plans */
+.membership-plans {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 280px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card.active {
+  border-color: #4a6bff;
+  transform: scale(1.03);
+}
+
+.plan-card.popular {
+  border-color: #ff6b6b;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #ff6b6b;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4a6bff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  color: #7f8c8d;
+  font-weight: normal;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-features li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.plan-features li:before {
+  content: "✓";
+  color: #4a6bff;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Payment Button */
+.payment-actions {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.payment-button {
+  background: linear-gradient(135deg, #4a6bff, #6a5acd);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 107, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 107, 255, 0.6);
+}
+
+.payment-button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* Benefits Section */
+.payment-benefits {
+  background: #f8f9fa;
+  padding: 3rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.payment-benefits h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-item h4 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Success Animation */
+.success-container {
+  max-width: 500px;
+  margin: 5rem auto;
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-animation {
+  margin-bottom: 2rem;
+}
+
+.checkmark {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 5;
+  stroke: #4a6bff;
+  stroke-miterlimit: 10;
+  margin: 0 auto;
+  box-shadow: 0 0 0 rgba(74, 107, 255, 0.4);
+  animation: checkmark 0.6s ease-in-out, checkmark-circle 0.6s ease-in-out;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  stroke: #4a6bff;
+  fill: none;
+  animation: checkmark-circle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: checkmark-check 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+.success-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+}
+
+.success-button {
+  background: #4a6bff;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.success-button:hover {
+  background: #3a5bef;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes checkmark {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes checkmark-circle {
+  0% {
+    stroke-dashoffset: 166;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkmark-check {
+  0% {
+    stroke-dashoffset: 48;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .membership-plans {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .plan-card {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .payment-header {
+    margin-bottom: 2rem;
+  }
+  
+  .payment-title {
+    font-size: 2rem;
+  }
+}
+
+
+/* Add these to your existing Payment.css */
+
+.container {
+  padding: 20px;
+  margin-left: 250px; /* Adjust based on your left menu width */
+  margin-top: 60px; /* Adjust based on your header height */
+  transition: all 0.3s;
+}
+
+/* If you have a collapsed left menu, you might want: */
+.left-menu-collapsed .container {
+  margin-left: 80px; /* Adjust based on collapsed menu width */
+}
+
+/* Make sure your payment container doesn't have fixed width */
+.payment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Adjust responsive styles */
+@media (max-width: 992px) {
+  .container {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .membership-plans {
+    flex-direction: column;
+  }
+  
+  .plan-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

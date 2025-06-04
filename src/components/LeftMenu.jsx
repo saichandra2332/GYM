@@ -42,6 +42,7 @@ function LeftMenu() {
     { path: "/home", icon: <House />, label: "Dashboard", color: "#FF6B35" },
     { path: "/home/workouts", icon: <Activity />, label: "Workouts", color: "#4ECDC4" },
     { path: "/home/members", icon: <People />, label: "Community", color: "#45B7D1" },
+    { path: "/payment", icon: <GraphUp />, label: "Payments", color: "#28a745" },
     { path: "/home/schedule", icon: <Calendar />, label: "Schedule", color: "#FFA630" },
     { path: "/settings", icon: <Gear />, label: "Settings", color: "#808080" },
     { path: "/profile", icon: <PersonBadge />, label: "Profile", color: "#A78AFF" },

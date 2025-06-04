@@ -7,6 +7,7 @@ import Members from './pages/Members';
 import Schedule from './pages/Schedule';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import Payment from './pages/Payment'; // if saved in pages folder
 import Logout from './pages/Logout';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +22,7 @@ function App() {
           <Route path="members" element={<Members />} />
           <Route path="schedule" element={<Schedule />} />
         </Route>
+                  <Route path="/payment" element={<Payment />} />
         <Route path="/profile" element={<Profile />} />
 <Route path="/settings" element={<Settings />} />
         <Route path="/logout" element={<Logout />} />
