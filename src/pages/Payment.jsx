@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Payment.css';
+import Header from '../components/Header';
+import LeftMenu from '../components/LeftMenu';
+import Footer from '../components/Footer';
 
 const Payment = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +35,7 @@ const Payment = () => {
       key: 'rzp_test_X0ttERlr0afucZ',
       amount: amount,
       currency: 'INR',
-      name: 'Fitness Pro Gym',
+      name: 'Fitness Guru Gym',
       description: `${membershipPlans[membershipType].name} Membership Payment`,
       image: 'https://via.placeholder.com/150',
       handler: function (response) {
@@ -85,97 +88,111 @@ const Payment = () => {
 
   if (paymentSuccess) {
     return (
-      <div className="container mt-4">
-        <div className="success-container">
-          <div className="success-animation">
-            <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-              <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-              <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-            </svg>
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <div className="d-flex flex-grow-1">
+          <LeftMenu />
+          <div className="container mt-4 flex-grow-1">
+            <div className="success-container">
+              <div className="success-animation">
+                <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                  <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                  <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+              </div>
+              <h2 className="success-title">Payment Successful!</h2>
+              <p className="success-message">Welcome to Fitness Guru Gym! Your {membershipPlans[membershipType].name} membership is now active.</p>
+              <button 
+                className="success-button"
+                onClick={() => setPaymentSuccess(false)}
+              >
+                Back to Membership
+              </button>
+            </div>
           </div>
-          <h2 className="success-title">Payment Successful!</h2>
-          <p className="success-message">Welcome to Fitness Pro Gym! Your {membershipPlans[membershipType].name} membership is now active.</p>
-          <button 
-            className="success-button"
-            onClick={() => setPaymentSuccess(false)}
-          >
-            Back to Membership
-          </button>
         </div>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="container mt-4">
-      <div className="payment-container">
-        <div className="payment-header">
-          <h1 className="payment-title">Join Fitness Pro Gym</h1>
-          <p className="payment-subtitle">Transform your body, transform your life</p>
-        </div>
-        
-        <div className="membership-plans">
-          {Object.keys(membershipPlans).map((plan) => (
-            <div 
-              key={plan} 
-              className={`plan-card ${membershipType === plan ? 'active' : ''} ${membershipPlans[plan].popular ? 'popular' : ''}`}
-              onClick={() => setMembershipType(plan)}
-            >
-              {membershipPlans[plan].popular && <div className="popular-badge">Most Popular</div>}
-              <h3 className="plan-name">{membershipPlans[plan].name}</h3>
-              <div className="plan-price">₹{membershipPlans[plan].price}<span>/month</span></div>
-              <ul className="plan-features">
-                {membershipPlans[plan].features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
+    <div className="d-flex flex-column min-vh-100">
+      <Header />
+      <div className="d-flex flex-grow-1">
+        <LeftMenu />
+        <div className="container mt-4 flex-grow-1">
+          <div className="payment-container">
+            <div className="payment-header">
+              <h1 className="payment-title">Join Fitness Guru Gym</h1>
+              <p className="payment-subtitle">Transform your body, transform your life</p>
             </div>
-          ))}
-        </div>
-        
-        <div className="payment-actions">
-          <button 
-            onClick={handlePayment} 
-            className="payment-button"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <>
-                <span className="spinner"></span>
-                Processing...
-              </>
-            ) : (
-              `Get ${membershipPlans[membershipType].name} Membership`
-            )}
-          </button>
-        </div>
-        
-        <div className="payment-benefits">
-          <h3>Why Choose Fitness Pro Gym?</h3>
-          <div className="benefits-grid">
-            <div className="benefit-item">
-              <div className="benefit-icon">💪</div>
-              <h4>World-Class Equipment</h4>
-              <p>State-of-the-art machines for all your fitness needs</p>
+            
+            <div className="membership-plans">
+              {Object.keys(membershipPlans).map((plan) => (
+                <div 
+                  key={plan} 
+                  className={`plan-card ${membershipType === plan ? 'active' : ''} ${membershipPlans[plan].popular ? 'popular' : ''}`}
+                  onClick={() => setMembershipType(plan)}
+                >
+                  {membershipPlans[plan].popular && <div className="popular-badge">Most Popular</div>}
+                  <h3 className="plan-name">{membershipPlans[plan].name}</h3>
+                  <div className="plan-price">₹{membershipPlans[plan].price}<span>/month</span></div>
+                  <ul className="plan-features">
+                    {membershipPlans[plan].features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-            <div className="benefit-item">
-              <div className="benefit-icon">🧘</div>
-              <h4>Expert Trainers</h4>
-              <p>Certified professionals to guide your fitness journey</p>
+            
+            <div className="payment-actions">
+              <button 
+                onClick={handlePayment} 
+                className="payment-button"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className="spinner"></span>
+                    Processing...
+                  </>
+                ) : (
+                  `Get ${membershipPlans[membershipType].name} Membership`
+                )}
+              </button>
             </div>
-            <div className="benefit-item">
-              <div className="benefit-icon">🥗</div>
-              <h4>Nutrition Plans</h4>
-              <p>Customized diet plans to complement your workouts</p>
-            </div>
-            <div className="benefit-item">
-              <div className="benefit-icon">🏆</div>
-              <h4>Proven Results</h4>
-              <p>Thousands of success stories from our members</p>
+            
+            <div className="payment-benefits">
+              <h3>Why Choose Fitness Guru Gym?</h3>
+              <div className="benefits-grid">
+                <div className="benefit-item">
+                  <div className="benefit-icon">💪</div>
+                  <h4>World-Class Equipment</h4>
+                  <p>State-of-the-art machines for all your fitness needs</p>
+                </div>
+                <div className="benefit-item">
+                  <div className="benefit-icon">🧘</div>
+                  <h4>Expert Trainers</h4>
+                  <p>Certified professionals to guide your fitness journey</p>
+                </div>
+                <div className="benefit-item">
+                  <div className="benefit-icon">🥗</div>
+                  <h4>Nutrition Plans</h4>
+                  <p>Customized diet plans to complement your workouts</p>
+                </div>
+                <div className="benefit-item">
+                  <div className="benefit-icon">🏆</div>
+                  <h4>Proven Results</h4>
+                  <p>Thousands of success stories from our members</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
