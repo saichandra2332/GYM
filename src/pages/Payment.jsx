@@ -37,7 +37,7 @@ const Payment = () => {
       currency: 'INR',
       name: 'Fitness Guru Gym',
       description: `${membershipPlans[membershipType].name} Membership Payment`,
-      image: 'https://via.placeholder.com/150',
+      image: 'Logo Gym.jpg',
       handler: function (response) {
         setIsLoading(false);
         setPaymentSuccess(true);
