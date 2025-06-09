@@ -12,8 +12,9 @@ import {
   HeartPulse,
   Gear,
   GraphUp,
-  Apple, // Added Apple icon import
-  PersonArmsUp 
+  Apple,
+  PersonArmsUp,
+  CreditCard // Added CreditCard icon for payments
 } from 'react-bootstrap-icons';
 import './LeftMenu.css';
 
@@ -41,19 +42,18 @@ function LeftMenu() {
   }, [location.pathname]);
 
   const menuItems = [
-  { path: "/home", icon: <House />, label: "Dashboard", color: "#FF6B35" },
-  { path: "/home/workouts", icon: <Activity />, label: "Workouts", color: "#4ECDC4" },
-  { path: "/home/members", icon: <People />, label: "Community", color: "#45B7D1" },
-  { path: "/home/trainers", icon: <PersonArmsUp />, label: "Trainers", color: "#FFA630" },
-  { path: "/nutrition", icon: <Apple />, label: "Nutrition", color: "#28a745" }, // New item
-  { path: "/progress", icon: <GraphUp />, label: "Progress", color: "#6f42c1" }, // New item
-  { path: "/payment", icon: <GraphUp />, label: "Payments", color: "#28a745" },
-  { path: "/home/schedule", icon: <Calendar />, label: "Schedule", color: "#FFA630" },
-  { path: "/settings", icon: <Gear />, label: "Settings", color: "#808080" },
-  { path: "/profile", icon: <PersonBadge />, label: "Profile", color: "#A78AFF" },
-  { path: "/logout", icon: <BoxArrowRight />, label: "Logout", color: "#FF3366", className: "logout-item" }
-];
-
+    { path: "/home", icon: <House />, label: "Dashboard", color: "#FF6B35" },
+    { path: "/home/workouts", icon: <Activity />, label: "Workouts", color: "#4ECDC4" },
+    { path: "/home/members", icon: <People />, label: "Community", color: "#45B7D1" },
+    { path: "/home/trainers", icon: <PersonArmsUp />, label: "Trainers", color: "#FFA630" },
+    { path: "/nutrition", icon: <Apple />, label: "Nutrition", color: "#28a745" },
+    { path: "/progress", icon: <GraphUp />, label: "Progress", color: "#6f42c1" },
+    { path: "/payment", icon: <CreditCard />, label: "Payments", color: "#28a745" }, // Changed icon here
+    { path: "/home/schedule", icon: <Calendar />, label: "Schedule", color: "#FFA630" },
+    { path: "/settings", icon: <Gear />, label: "Settings", color: "#808080" },
+    { path: "/profile", icon: <PersonBadge />, label: "Profile", color: "#A78AFF" },
+    { path: "/logout", icon: <BoxArrowRight />, label: "Logout", color: "#FF3366", className: "logout-item" }
+  ];
   const handleClick = (e, index) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
